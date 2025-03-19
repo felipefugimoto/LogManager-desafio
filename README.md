@@ -213,7 +213,9 @@ public function updateDeliveryStatus(Request $request)
 
 
 public function getDeliveryReport(Request $request)
+
 {
+
     $deliveries = Delivery::with('packages')
         ->whereIn('status', $request->statuses)
         ->whereIn('courier', $request->couriers)
@@ -221,6 +223,7 @@ public function getDeliveryReport(Request $request)
         ->get();
 
     return response()->json($deliveries);
+    
 }
 
 

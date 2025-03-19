@@ -211,6 +211,7 @@ public function updateDeliveryStatus(Request $request)
 ## Otimização da Query de Relatório
 
 
+
 public function getDeliveryReport(Request $request)
 {
     $deliveries = Delivery::with('packages')
@@ -222,9 +223,15 @@ public function getDeliveryReport(Request $request)
     return response()->json($deliveries);
 }
 
+
+
 ## Melhorias na Indexação
+
+
 CREATE INDEX idx_status ON deliveries(status);
+
 CREATE INDEX idx_courier ON deliveries(courier);
+
 CREATE INDEX idx_delivery_date ON deliveries(delivery_date);
 
 
